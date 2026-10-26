@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="96" fill="#172536"/>
+<path d="M65 132h382l-25 46H90z" fill="#e9b949"/>
+<path d="M88 203h336l-27 46H115z" fill="#32495e"/>
+<path d="M115 274h282l-26 46H141z" fill="#32495e"/>
+<text x="256" y="410" font-family="Arial,sans-serif" font-weight="900" font-size="98" text-anchor="middle" fill="#f3f6fa">TDM</text>
+</svg>

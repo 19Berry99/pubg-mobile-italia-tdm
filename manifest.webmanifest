@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "PUBG Mobile Italia TDM Calculator",
+  "short_name": "ITA TDM Calc",
+  "description": "Calcolatore e confronto percentuali TDM per player PUBG Mobile Italia.",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e1721",
+  "theme_color": "#172536",
+  "icons": [
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}
+  ]
+}
