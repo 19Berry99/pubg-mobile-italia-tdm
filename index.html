@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#172536">
-  <meta name="description" content="Calcolatore TDM per profili PUBG Mobile Italia: ID player, percentuali e confronto.">
+  <meta name="description" content="Calcolatore e classifica TDM per PUBG Mobile Italia.">
   <title>PUBG MOBILE ITALIA · TDM Calculator</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -23,55 +23,65 @@
 
   <main>
     <section class="notice">
-      <strong>Versione iniziale</strong>
-      <p>Le statistiche sono inserite manualmente. Il recupero automatico tramite ID non è collegato: serve una fonte dati compatibile con PUBG Mobile.</p>
+      <strong>Statistiche TDM</strong>
+      <p>Inserisci il numero di vittorie e sconfitte: percentuali e classifica vengono calcolate automaticamente.</p>
+      <p class="notice-small">Nota: questa versione salva i dati in questo browser. Per una classifica condivisa online tra tutti i dispositivi servirà collegare un database comune.</p>
     </section>
 
     <section class="panel">
       <div class="section-heading">
-        <div><p class="eyebrow">DATABASE LOCALE</p><h2>Aggiungi player</h2></div>
+        <div><p class="eyebrow">NUOVO PROFILO</p><h2>Aggiungi player</h2></div>
         <span class="tag">ITALIA / TDM</span>
       </div>
       <form id="playerForm">
         <label for="playerId">Player ID <span>*</span></label>
         <input id="playerId" name="playerId" autocomplete="off" placeholder="Es. 51234567890" required maxlength="40">
         <label for="nickname">Nickname</label>
-        <input id="nickname" name="nickname" autocomplete="off" placeholder="Nome in gioco">
+        <input id="nickname" name="nickname" autocomplete="off" placeholder="Nome in gioco" maxlength="50">
         <div class="two-col">
           <div>
-            <label for="wins">Vittorie (%)</label>
-            <input id="wins" name="wins" type="number" min="0" max="100" step="0.1" value="50" required>
+            <label for="wins">Vittorie</label>
+            <input id="wins" name="wins" type="number" min="0" step="1" value="0" required>
           </div>
           <div>
-            <label for="losses">Sconfitte (%)</label>
-            <input id="losses" name="losses" type="number" min="0" max="100" step="0.1" value="50" required>
+            <label for="losses">Sconfitte</label>
+            <input id="losses" name="losses" type="number" min="0" step="1" value="0" required>
           </div>
         </div>
-        <p class="hint">Le due percentuali devono totalizzare il 100%. Modificando una, l'altra viene aggiornata automaticamente.</p>
+        <p class="hint">Le percentuali e le partite totali si aggiornano automaticamente. Inserisci numeri interi pari o superiori a zero.</p>
         <button class="primary" type="submit">＋ Aggiungi giocatore</button>
       </form>
     </section>
 
     <section class="panel">
       <div class="section-heading">
-        <div><p class="eyebrow">ROSTER</p><h2>Giocatori salvati <span id="playerCount" class="count">0</span></h2></div>
+        <div><p class="eyebrow">RANKING</p><h2>Classifica generale <span id="playerCount" class="count">0</span></h2></div>
         <button id="exportBtn" class="secondary" type="button">Esporta JSON</button>
       </div>
-      <div id="emptyState" class="empty">Nessun player inserito. Aggiungi il primo profilo qui sopra.</div>
-      <div id="playerList" class="player-list"></div>
-      <div id="comparison" class="comparison" hidden>
-        <div class="section-heading"><h2>Confronto win rate</h2><span class="tag">Selezionati</span></div>
-        <div id="comparisonList"></div>
+      <p class="hint">Ordine: percentuale vittorie, poi numero di vittorie. La classifica mostra tutti i profili salvati in questo browser.</p>
+      <div id="emptyState" class="empty">Nessun player registrato. Aggiungi il primo profilo qui sopra.</div>
+      <div class="table-wrap" id="rankingWrap" hidden>
+        <table class="ranking-table">
+          <thead><tr><th>#</th><th>Giocatore</th><th>V</th><th>S</th><th>Tot.</th><th>Win rate</th></tr></thead>
+          <tbody id="rankingBody"></tbody>
+        </table>
       </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">GESTIONE PROFILI</p><h2>Giocatori registrati</h2></div>
+      </div>
+      <div id="playerList" class="player-list"></div>
       <div class="bottom-actions">
         <label class="import-label" for="importFile">Importa JSON</label>
         <input id="importFile" type="file" accept=".json,application/json" hidden>
         <button id="clearBtn" class="danger-outline" type="button">Cancella tutti</button>
       </div>
+      <p class="footnote">Consiglio: esporta un backup prima di cancellare i dati o cambiare dispositivo.</p>
     </section>
-    <p class="footnote">I dati vengono salvati in questo browser sul tuo dispositivo. Esporta un backup se non vuoi perderli quando cambi telefono o browser.</p>
   </main>
-  <footer>Fan-made utility · Non affiliata a PUBG MOBILE o KRAFTON.</footer>
+  <footer>PUBG MOBILE ITALIA · TDM Calculator</footer>
   <script src="app.js"></script>
 </body>
 </html>
