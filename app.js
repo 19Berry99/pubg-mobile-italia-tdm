@@ -60,20 +60,27 @@ function showMessage(id, message, error = false) {
 }
 
 function updateAuthUI() {
+  const adminPanel = $("adminPanel");
+  const accessButton = $("showAdminBtn");
+
   $("loginForm").hidden = Boolean(currentSession);
   $("logoutBtn").hidden = !currentSession;
   $("playerEditor").hidden = !isAdmin;
   $("managementPanel").hidden = !isAdmin;
 
   if (isAdmin) {
-    $("authStatus").textContent =
-      "Accesso amministratore attivo";
+    $("authStatus").textContent = "Accesso amministratore attivo";
+    adminPanel.hidden = false;
+    if (accessButton) accessButton.hidden = true;
   } else if (currentSession) {
     $("authStatus").textContent =
       "Account autenticato, ma senza permessi SONIC";
+    adminPanel.hidden = false;
+    if (accessButton) accessButton.hidden = true;
   } else {
-    $("authStatus").textContent =
-      "Classifica pubblica · Accesso riservato agli amministratori";
+    $("authStatus").textContent = "Non connesso";
+    adminPanel.hidden = true;
+    if (accessButton) accessButton.hidden = false;
   }
 
   if (!isAdmin) {
